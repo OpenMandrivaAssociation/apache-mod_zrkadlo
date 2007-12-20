@@ -29,6 +29,7 @@ BuildRequires:	apache-devel >= 2.2.0
 BuildRequires:	GeoIP-devel
 BuildRequires:	apr_memcache-devel
 BuildRequires:	apache-mod_form-devel
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 This apache module redirects clients to mirror servers, using an SQL backend.
