@@ -8,12 +8,13 @@
 Summary:	Redirect clients to mirror servers, based on sql database
 Name:		apache-%{mod_name}
 Version:	1.0
-Release:	%mkrel 0.%{snap}.2
+Release:	%mkrel 0.%{snap}.3
 Group:		System/Servers
 License:	Apache License
 URL:		http://en.opensuse.org/Build_Service/Redirector
 Source0:	%{mod_name}.tar.gz
 Source1:	%{mod_conf}
+Patch0:		mod_zrkadlo-apu13.diff
 Requires(pre): rpm-helper
 Requires(postun): rpm-helper
 Requires(pre):	apache-conf >= 2.2.0
@@ -26,8 +27,8 @@ Requires:	geoip
 Requires:	apr-util-dbd-mysql
 Requires:	apache-mod_dbd
 BuildRequires:	apache-devel >= 2.2.0
+BuildRequires:	apr-util-devel >= 1.3.0
 BuildRequires:	GeoIP-devel
-BuildRequires:	apr_memcache-devel
 BuildRequires:	apache-mod_form-devel
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
@@ -37,12 +38,14 @@ This apache module redirects clients to mirror servers, using an SQL backend.
 %prep
 
 %setup -q -n %{mod_name}
+%patch0 -p0
 
 cp %{SOURCE1} %{mod_conf}
 
 %build
 
-%{_sbindir}/apxs -c -lGeoIP -lapr_memcache -Wc,"-Wall -g" mod_zrkadlo.c
+%{_sbindir}/apxs -c -lGeoIP `apu-1-config --link-ld` -Wc,"-Wall -g" mod_zrkadlo.c
+
 gcc %{optflags} -Wall -lGeoIP -o geoiplookup_continent geoiplookup_continent.c
 
 %install
