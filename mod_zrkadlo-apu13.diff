@@ -1,0 +1,11 @@
+--- mod_zrkadlo.c	2007-09-11 14:57:59.000000000 +0200
++++ mod_zrkadlo.c.oden	2008-06-07 21:18:37.000000000 +0200
+@@ -45,7 +45,7 @@
+ #include "mod_dbd.h"
+ 
+ #include <GeoIP.h>
+-#include <apr_memcache-0/apr_memcache.h>
++#include <apr_memcache.h>
+ #include "ap_mpm.h" /* for ap_mpm_query */
+ #include "mod_status.h"
+ #include "mod_form.h"
