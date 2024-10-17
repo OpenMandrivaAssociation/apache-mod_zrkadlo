@@ -11,7 +11,7 @@ Version:	1.0
 Release:	%mkrel 0.%{snap}.10
 Group:		System/Servers
 License:	Apache License
-URL:		http://en.opensuse.org/Build_Service/Redirector
+URL:		https://en.opensuse.org/Build_Service/Redirector
 Source0:	%{mod_name}.tar.gz
 Source1:	%{mod_conf}
 Patch0:		mod_zrkadlo-apu13.diff
