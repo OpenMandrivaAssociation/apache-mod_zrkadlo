@@ -8,7 +8,7 @@
 Summary:	Redirect clients to mirror servers, based on sql database
 Name:		apache-%{mod_name}
 Version:	1.0
-Release:	%mkrel 0.%{snap}.10
+Release:	0.%{snap}.11
 Group:		System/Servers
 License:	Apache License
 URL:		https://en.opensuse.org/Build_Service/Redirector
